@@ -1,12 +1,20 @@
 package com.example.BibliotecaMD11.Model;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "tabela_Autores")
 public class Author {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private Integer birthYear;
     private Integer deathYear;
+    @ManyToMany
     private List<Book> books = new ArrayList<>();
 
     public Author() {

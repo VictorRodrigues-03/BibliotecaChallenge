@@ -1,5 +1,6 @@
 package com.example.BibliotecaMD11.View;
 
+import com.example.BibliotecaMD11.Repository.BookRepository;
 import com.example.BibliotecaMD11.Services.Main;
 
 import java.util.Scanner;
@@ -18,7 +19,11 @@ public class Menu {
             7 - Listar livros por lingua
             """;
     private final Scanner scanner = new Scanner(System.in);
-    private final Main main = new Main();
+    private final Main main;
+
+    public Menu(BookRepository bookRepository) {
+        this.main = new Main(bookRepository);
+    }
 
     public void menu() {
         while (true){
