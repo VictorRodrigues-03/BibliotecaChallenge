@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Menu {
 
     private final String menuS = """
-            ======== Bem-Vindo do Biblioteca MD11 ========
+            ======== Bem-Vindo da Biblioteca MD11 ========
             0 - Buscar Livro por Autor(API)
             1 - Buscar Livro(API)
             2 - Buscar Autor(Banco)

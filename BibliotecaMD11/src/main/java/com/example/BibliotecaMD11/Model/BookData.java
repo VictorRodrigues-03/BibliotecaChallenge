@@ -8,5 +8,6 @@ import java.util.List;
 public record BookData(@JsonAlias("title") String title,
                        @JsonAlias("authors") List<AuthorsData> authors,
                        @JsonAlias("subjects") List<String> genre,
-                       @JsonAlias("download_count") Integer downloadCount) {
+                       @JsonAlias("download_count") Integer downloadCount,
+                       @JsonAlias("languages") List<String> linguas) {
 }

@@ -19,7 +19,6 @@ public class SearchBooks {
         String livro = scanner.nextLine();
         url = ENDERECO + livro.replace(" ","+");
         API_Response response = dataConverter.obterDados(apiService.getData(url),API_Response.class);
-        System.out.println(response.resultado());
         return response.resultado().get(0);
     }
 

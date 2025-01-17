@@ -1,5 +1,7 @@
 package com.example.BibliotecaMD11.Services;
 
+import com.example.BibliotecaMD11.Model.Author;
+import com.example.BibliotecaMD11.Model.Book;
 import com.example.BibliotecaMD11.Model.BookData;
 
 import java.util.Scanner;
@@ -11,8 +13,10 @@ public class Main {
 
     public void opcao1(){
         BookData book = searchService.buscarLivro();
-
-        System.out.println(book);
+        Author testAuthor = new Author(book.authors().get(0));
+        Book test = new Book(book);
+        System.out.println(test);
+        System.out.println(testAuthor);
     }
 
 
