@@ -17,6 +17,7 @@ public class Menu {
             5 - Listar livros
             6 - Listar autores
             7 - Listar livros por lingua
+            8 - Top 10 livros mais baixados
             """;
     private final Scanner scanner = new Scanner(System.in);
     private final Main main;
@@ -31,12 +32,35 @@ public class Menu {
             Integer op = scanner.nextInt();
             switch (op) {
                 case 0:
-                    return ;
+                    main.opcao0();
+                    break;
                 case 1:
                     main.opcao1();
                     break;
+                case 2:
+                    main.opcao2();
+                    break;
+                case 3:
+                    main.opcao3();
+                    break;
+                case 4:
+                    main.opcao4();
+                    break;
+                case 5:
+                    main.opcao5();
+                    break;
+                case 6:
+                    main.opcao6();
+                    break;
+                case 7:
+                    main.opcao7();
+                    break;
+                case 8:
+                    main.opcao8();
+                    break;
                 default:
-                    System.out.println("Em prod");
+                    System.out.println("Terminado");
+                    return;
             }
         }
     }

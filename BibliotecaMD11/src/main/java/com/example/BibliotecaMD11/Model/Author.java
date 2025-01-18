@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 
 @Entity
 @Table(name = "tabela_Autores")
@@ -11,10 +13,11 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true, nullable = false)
     private String name;
     private Integer birthYear;
     private Integer deathYear;
-    @ManyToMany
+    @ManyToMany(mappedBy = "authors")
     private List<Book> books = new ArrayList<>();
 
     public Author() {
@@ -22,9 +25,14 @@ public class Author {
     }
 
     public Author(AuthorsData authorsData) {
-        this.birthYear = Integer.valueOf(authorsData.anoNascimento());
+        if (authorsData.anoNascimento() == null) {
+            this.birthYear = 0;
+            this.deathYear = 0;
+        }else {
+            this.birthYear = Integer.valueOf(authorsData.anoNascimento());
+            this.deathYear = Integer.valueOf(authorsData.anoFalecimento());
+        }
         this.name = authorsData.nome();
-        this.deathYear = Integer.valueOf(authorsData.anoFalecimento());
     }
 
     private List<Book> getBooks() {

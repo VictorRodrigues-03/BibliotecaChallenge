@@ -8,7 +8,14 @@ public enum Genre {
     CRIME("Crime"),
     FANTASY("Fantasy"),
     MYSTERY("Mystery"),
-    NOVEL("Novel");
+    NOVEL("Novel"),
+    POETRY("Poetry"),
+    HISTORY("History"),
+    LITERATURE("Literature"),
+    CULTURE("Culture"),
+    SOCIETY("Society"),
+    HUMOUR("Humour"),
+    COMEDY("Comedy");
 
 
     private String english;
@@ -18,15 +25,22 @@ public enum Genre {
     }
 
     public static Genre getGenre(String genreE) {
-        String[] parts = genreE.split("-- ");
+        String[] parts = genreE.split(": ");
+        if (parts[1].contains("/")){
+            parts[1] = parts[1].split("/")[0];
+        }
+        if (parts[1].contains("-")){
+            parts[1] = parts[1].split(" - ")[0];
+        }
         // Pega a última parte
         String lastPart = parts[1];
         for (Genre Genre : Genre.values()) {
-            if (Genre.english.equals(lastPart)) {
+            if (Genre.english.contains(lastPart)) {
                 return Genre;
             }
         }
-        throw new IllegalArgumentException();
+        throw new IllegalArgumentException("Nenhuma categoria encontrada para a String: " + genreE);
+
     }
 
 }

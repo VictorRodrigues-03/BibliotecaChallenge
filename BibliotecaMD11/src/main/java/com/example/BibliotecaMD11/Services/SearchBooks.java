@@ -3,6 +3,7 @@ package com.example.BibliotecaMD11.Services;
 import com.example.BibliotecaMD11.Model.API_Response;
 import com.example.BibliotecaMD11.Model.BookData;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class SearchBooks {
@@ -22,14 +23,12 @@ public class SearchBooks {
         return response.resultado().get(0);
     }
 
-    public BookData buscarLivroAutor(){
-        System.out.println("Digite o nome do livro que deseja buscar:\n->");
-        String livro = scanner.nextLine();
+    public List<BookData> buscarAutor(){
         System.out.println("Digite o nome do Autor que deseja buscar:\n->");
         String autor = scanner.nextLine();
-        url = ENDERECO + autor.replace(" ","+") + "%20" + livro.replace(" ","+");
+        url = ENDERECO + autor.replace(" ","+");
         API_Response response = dataConverter.obterDados(apiService.getData(url),API_Response.class);
-        return response.resultado().get(0);
+        return response.resultado();
     }
 
 
